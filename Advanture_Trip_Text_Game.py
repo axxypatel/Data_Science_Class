@@ -30,8 +30,6 @@ def handle_input(user_input_temp):       # Function to handle the Input which ch
 
 
 def get_input(current_step_temp):          # Function to get the Input options for the player for each states comes during the game
-    selected_option = 0
-
     # All option of various stages are stored below dictonary
     user_options = {0: ["Hint - Lobby of the House", "[1] - Go to the Living Room", "[2] - Go to the Room1", "[3] - Stay here and cancel the Adventurous trip with friends"],
                     1: ["Living Room", "[1] - Go back to the Lobby", "[2] - Go to Room1", "[3] - Take the bag", "[4] - Grab the grooming stuff", "[5] - Don't forget to take the deodorant"],
@@ -121,6 +119,3 @@ while player_health > 0:  # main loop to check the lifeline of the player during
         print("You collected all the items needed for trip. Go ahead and enjoy the trip")
         print("----------------------------")
         break
-
-
-

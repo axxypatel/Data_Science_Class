@@ -1,6 +1,5 @@
 # Advanture Trip Text Game
 
-
 print("------------------------------------------------------------")
 print("------------------------------------------------------------")
 print("------------------------------------------------------------")
@@ -21,11 +20,17 @@ player_health = 16         # player health variable at the start of game.
 def handle_input(user_input_temp):       # Function to handle the Input which checks the quality of the Input
     proper_input = True
     standard_inputs = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    if user_input_temp not in standard_inputs:
-        print("Your input is not available in the options provided earlier.")
+    if user_input_temp.isnumeric():
+        if user_input_temp not in standard_inputs:
+            print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+            print("Your input is not available in the options provided earlier. Please choose option again.")
+            print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+            proper_input = False
+    else:
+        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        print("Your input is not number. Please choose option again.")
+        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         proper_input = False
-        return proper_input
-
     return proper_input
 
 
@@ -39,16 +44,18 @@ def get_input(current_step_temp):          # Function to get the Input options f
                     5: ["Kitchen", "[1] - Pack the required food", "[2] - Take the protein bars", "[3] - Take the water bottles", "[4] - Go back to the Room 3", "[5] - If you're done picking things go back to the Lobby"]}
 
     stage_option = user_options[current_step_temp]
-    print("\n Your option are mention below: \n", *stage_option, sep="\n") #This will display all the option in new line
-    user_input = int(input("Please enter your option: "))
+    print("********************************************************************************")
+    print("********************************************************************************")
+    print("Your option are mention below: \n", *stage_option, sep="\n")   # This will display all the option in new line
+    user_input = input("Please enter your option:\n")
     check_input = handle_input(user_input)
 
     while not check_input:
-        print("Your option are mention below: \n", stage_option)
-        user_input = input("Please enter your option")
+        print("Your option are mention below: \n", *stage_option, sep="\n")
+        user_input = input("Please enter your option:\n")
         check_input = handle_input(user_input)
 
-    user_input_string = stage_option[user_input]
+    user_input_string = stage_option[int(user_input)]
     track_player_step(user_input_string)
     global player_health
     player_health -= 1
@@ -67,6 +74,20 @@ def winning_condition_check():
         return True
     else:
         return False
+
+
+def show_player_steps():
+    print("********************************************************************************")
+    print("********************************************************************************")
+    print("Please type YES/NO if you want to check all the steps taken during game.")
+    show_step_input = input()
+    if show_step_input.upper() == "YES":
+        print("*************************Health Report******************************************")
+        print(*all_steps, sep='\n')
+        print("*************************Player Health******************************************")
+        print("Your health remaining in the game is :", player_health)
+    else:
+        print("Hope you enjoyed the game")
 
 
 next_input = 0            # variable to store the next input which user has entered from the choices
@@ -116,6 +137,17 @@ while player_health > 0:  # main loop to check the lifeline of the player during
         if next_input == 4:
             current_step = 4
     if winning_condition_check():
+        print("********************************************************************************")
+        print("********************************************************************************")
+        print("********************************************************************************")
         print("You collected all the items needed for trip. Go ahead and enjoy the trip")
         print("----------------------------")
+        show_player_steps()
         break
+else:
+    print("********************************************************************************")
+    print("********************************************************************************")
+    print("********************************************************************************")
+    print("You are not left with any health.")
+    show_player_steps()
+    print("Game over")

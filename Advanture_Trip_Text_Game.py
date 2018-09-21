@@ -39,8 +39,8 @@ def get_input(current_step_temp):          # Function to get the Input options f
                     5: ["Kitchen", "[1] - Pack the required food", "[2] - Take the protein bars", "[3] - Take the water bottles", "[4] - Go back to the Room 3", "[5] - If you're done picking things go back to the Lobby"]}
 
     stage_option = user_options[current_step_temp]
-    print("Your option are mention below: \n", stage_option)
-    user_input = int(input("Please enter your option"))
+    print("\nYour option are mention below: \n", *stage_option, sep="\n")
+    user_input = int(input("Please enter your option: "))
     check_input = handle_input(user_input)
 
     while not check_input:

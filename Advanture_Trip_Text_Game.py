@@ -21,6 +21,7 @@ def handle_input(user_input_temp):       # Function to handle the Input which ch
     proper_input = True
     standard_inputs = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     if user_input_temp.isnumeric():
+        user_input_temp = int(user_input_temp)
         if user_input_temp not in standard_inputs:
             print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
             print("Your input is not available in the options provided earlier. Please choose option again.")
@@ -55,7 +56,8 @@ def get_input(current_step_temp):          # Function to get the Input options f
         user_input = input("Please enter your option:\n")
         check_input = handle_input(user_input)
 
-    user_input_string = stage_option[int(user_input)]
+    user_input = int(user_input)
+    user_input_string = stage_option[user_input]
     track_player_step(user_input_string)
     global player_health
     player_health -= 1

@@ -1,17 +1,16 @@
 # Advanture Trip Text Game
 
-print("------------------------------------------------------------")
-print("------------------------------------------------------------")
-print("------------------------------------------------------------")
+print("--------------------------------------------------------------------------------------------------------------------------")
+print("--------------------------------------------------------------------------------------------------------------------------")
 print("Game Start")
-print("------------------------------------------------------------")
-print("------------------------------------------------------------")
+print("--------------------------------------------------------------------------------------------------------------------------")
+print("--------------------------------------------------------------------------------------------------------------------------")
 print("Hello and welcome to the Adventure Trip Game.")
 print("This is a text based game where you have to 17select options on every state.")
-print("Game Rules: You have to collect things from the different rooms/kitchen/living room of house which are extremly(Focus on this word :D) necessary for the adventure trip.")
-print("Winning condition of the game is depend on the number of items which you select during game. If you collected all the necessary items then you are ready to go on adventure trip.")
-print("You should collect all the items within 16 or less steps in order to win the game.")
-print("Objective: Collect all the necessary items that are needed to go on adventure trip.")
+print("Game Rules: You have to collect things from the different rooms/kitchen/living-room of house which are extremly (Focus on this word :D) necessary for the adventure trip.")
+print("            Winning condition of the game is depend on the number of items which you select during game. If you collected all the necessary items then you are ready to go on adventure trip.")
+print("            You should collect all the items within 16 or less steps in order to win the game.")
+print("Objective: Collect all the necessary items that are needed to go on adventure trip. Choose all items wisely.")
 
 all_steps = ["Start of a Game and you are standing in Lobby of House"]  # This list will store all the steps of the player
 player_steps = 16         # player health variable at the start of game.
@@ -39,13 +38,12 @@ def handle_input(user_input_temp):       # Function to handle the Input which ch
 
 def get_input(current_step_temp):          # Function to get the Input options for the player for each states comes during the game
     # All option of various stages are stored below dictonary
-    user_options = {0: ["You are currently in - The Lobby", "[1] - Go to the Living Room", "[2] - Go to Room 1", "[3] - Stay here and cancel the trip", "[4] - Get hiking shoes from box and put them on", "[5] - Pick up the crocs"],
-                    1: ["You are currently in - The Living Room", "[1] - Go back to the Lobby", "[2] - Go to Room 1", "[3] - Take the bag", "[4] - Pick up car keys", "[5] - Pick up the deodorant"],
-                    2: ["You are currently in - Room 1 (Clothes)", "[1] - Go to Lobby", "[2] - Go to Living Room", "[3] - Go to Room 2", "[4] - Get clothes from closet", "[5] - Pick up iPod", "[6] - Pick up charger"],
-                    3: ["You are currently in - Room 2 (Safety Items)", "[1] - Go back to the Room 1", "[2] - Go to Room 3", "[3] - Take torch, pair of batteries, first aid kit and Map", "[4] - Pick up anti-glare sunglasses", "[5] - Pick up the axe"],
-                    4: ["You are currently in - Room 3 (Tent)", "[1] - Go back to the Room 2", "[2] - Go to the kitchen", "[3] - Take the tent", "[4] - Take the sleeping bag", "[5] - Take the travel pillow", "[6] - Take the comforter"],
-                    5: ["You are currently in - The Kitchen", "[1] - Take the bread packet", "[2] - Take extra protein bars", "[3] - Go back to Room 2", "[4] - Go back to the Room 3", "[5] - Finish packing and go back to the Lobby"]}
-
+    user_options = {0: ["You are currently in - The Lobby : \nHint: You need to protect your legs from cold weather. ", "[1] - Go to the Living Room", "[2] - Go to Room 1", "[3] - Stay here and cancel the trip", "[4] - Get hiking shoes from box and put them on", "[5] - Pick up the crocs"],
+                    1: ["You are currently in - The Living Room : \nHint: You need something to keep everything at one place.", "[1] - Go back to the Lobby", "[2] - Go to Room 1", "[3] - Take the bag", "[4] - Pick up car keys", "[5] - Pick up the deodorant"],
+                    2: ["You are currently in - Room 1 : \nHint: Since you are going to trip, take something which suits you.", "[1] - Go to Lobby", "[2] - Go to Living Room", "[3] - Go to Room 2", "[4] - Get clothes from closet", "[5] - Pick up iPod", "[6] - Pick up charger"],
+                    3: ["You are currently in - Room 2 : \nHint: Precaution is better than cure. You might need to take Precaution.", "[1] - Go back to the Room 1", "[2] - Go to Room 3", "[3] - Take torch, pair of batteries, first aid kit and Map", "[4] - Pick up anti-glare sunglasses", "[5] - Pick up the axe"],
+                    4: ["You are currently in - Room 3 : \nHint: You need shelter and place where you can sleep on trip.", "[1] - Go back to the Room 2", "[2] - Go to the kitchen", "[3] - Take the tent", "[4] - Take the sleeping bag", "[5] - Take the travel pillow", "[6] - Take the comforter"],
+                    5: ["You are currently in - The Kitchen : \nHint: You might run out of calories or protein. ", "[1] - Take the bread packet", "[2] - Take extra protein bars", "[3] - Go back to Room 2", "[4] - Go back to the Room 3", "[5] - Finish packing and go back to the Lobby"]}
 
     stage_option = user_options[current_step_temp]
     print("********************************************************************************")

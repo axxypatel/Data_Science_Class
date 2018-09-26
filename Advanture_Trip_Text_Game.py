@@ -1,6 +1,6 @@
 # Advanture Trip Text Game
 import matplotlib.pyplot as plt
-import numpy as np
+
 print("--------------------------------------------------------------------------------------------------------------------------")
 print("--------------------------------------------------------------------------------------------------------------------------")
 print("Game Start")
@@ -98,9 +98,9 @@ def show_player_steps():
 
 
 def show_health_graph():
-    x_values = ["Total Health","Health Left"]
-    height = [player_steps_all,player_steps]
-    plt.bar(x_values,height,align='center', alpha=0.5, color = 'g')
+    x_values = ["Total Health", "Health Left"]
+    height = [player_steps_all, player_steps]
+    plt.bar(x_values, height, align='center', alpha=0.5, color='g')
     plt.title("Player Health Graph")
     plt.show()
 

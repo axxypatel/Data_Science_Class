@@ -1,5 +1,6 @@
 # Advanture Trip Text Game
-
+import matplotlib.pyplot as plt
+import numpy as np
 print("--------------------------------------------------------------------------------------------------------------------------")
 print("--------------------------------------------------------------------------------------------------------------------------")
 print("Game Start")
@@ -14,6 +15,7 @@ print("Objective: Collect all the necessary items that are needed to go on adven
 
 all_steps = ["Start of a Game and you are standing in Lobby of House"]  # This list will store all the steps of the player
 player_steps = 16         # player health variable at the start of game.
+player_steps_all = 16
 
 # All user defined function written below
 
@@ -95,6 +97,14 @@ def show_player_steps():
         print("Hope you enjoyed the game")
 
 
+def show_health_graph():
+    x_values = ["Total Health","Health Left"]
+    height = [player_steps_all,player_steps]
+    plt.bar(x_values,height,align='center', alpha=0.5, color = 'g')
+    plt.title("Player Health Graph")
+    plt.show()
+
+
 next_input = 0            # variable to store the next input which user has entered from the choices
 current_step = 0          # variable to store the value of current step which player will take during the game.
 while player_steps > 0:   # main loop to check the lifeline of the player during the game
@@ -148,6 +158,7 @@ while player_steps > 0:   # main loop to check the lifeline of the player during
         print("You have collected all the items needed for trip. Go ahead and enjoy!")
         print("----------------------------")
         show_player_steps()
+        show_health_graph()
         break
 else:
     print("********************************************************************************")
@@ -155,4 +166,5 @@ else:
     print("********************************************************************************")
     print("You have used up all your steps.")
     show_player_steps()
+    show_health_graph()
     print("Game over")

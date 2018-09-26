@@ -39,7 +39,7 @@ def handle_input(user_input_temp):       # Function to handle the Input which ch
 def get_input(current_step_temp):          # Function to get the Input options for the player for each states comes during the game
     # All option of various stages are stored below dictonary
     user_options = {0: ["You are currently in - The Lobby : \nHint: You need to protect your legs from cold weather. ", "[1] - Go to the Living Room", "[2] - Go to Room 1", "[3] - Stay here and cancel the trip", "[4] - Get hiking shoes from box and put them on", "[5] - Pick up the crocs"],
-                    1: ["You are currently in - The Living Room : \nHint: You need something to keep everything at one place.", "[1] - Go back to the Lobby", "[2] - Go to Room 1", "[3] - Take the bag", "[4] - Pick up car keys", "[5] - Pick up the deodorant"],
+                    1: ["You are currently in - The Living Room : \nHint: You need something to keep everything at one place.Hurry Up ! Bus is waiting for you.", "[1] - Go back to the Lobby", "[2] - Go to Room 1", "[3] - Take the bag", "[4] - Pick up car keys", "[5] - Pick up the deodorant"],
                     2: ["You are currently in - Room 1 : \nHint: Since you are going to trip, take something which suits you.", "[1] - Go to Lobby", "[2] - Go to Living Room", "[3] - Go to Room 2", "[4] - Get clothes from closet", "[5] - Pick up iPod", "[6] - Pick up charger"],
                     3: ["You are currently in - Room 2 : \nHint: Precaution is better than cure. You might need to take Precaution.", "[1] - Go back to the Room 1", "[2] - Go to Room 3", "[3] - Take torch, pair of batteries, first aid kit and Map", "[4] - Pick up anti-glare sunglasses", "[5] - Pick up the axe"],
                     4: ["You are currently in - Room 3 : \nHint: You need shelter and place where you can sleep on trip.", "[1] - Go back to the Room 2", "[2] - Go to the kitchen", "[3] - Take the tent", "[4] - Take the sleeping bag", "[5] - Take the travel pillow", "[6] - Take the comforter"],
@@ -87,6 +87,8 @@ def show_player_steps():
     if show_step_input.upper() == "YES":
         print("*************************Steps Report******************************************")
         print(*all_steps, sep='\n')
+        step_file = open("../steps_report.txt", "w+")
+        step_file.write("\n".join(all_steps))             # Write report to text file.
         print("*************************Player Steps******************************************")
         print("Remaining steps :", player_steps)
     else:
@@ -95,7 +97,7 @@ def show_player_steps():
 
 next_input = 0            # variable to store the next input which user has entered from the choices
 current_step = 0          # variable to store the value of current step which player will take during the game.
-while player_steps > 0:  # main loop to check the lifeline of the player during the game
+while player_steps > 0:   # main loop to check the lifeline of the player during the game
     if current_step == 0:
         next_input = get_input(current_step)
         if next_input == 1:

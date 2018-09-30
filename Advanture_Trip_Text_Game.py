@@ -75,7 +75,7 @@ def track_player_step(user_input_string_temp):  # Function to save all the steps
 def winning_condition_check():
     win_condition = {"[3] - Take the bag", "[4] - Get clothes from closet", "[3] - Take torch, pair of batteries, first aid kit and Map", "[3] - Take the tent", "[4] - Take the sleeping bag", "[2] - Take extra protein bars", "[4] - Get hiking shoes from box and put them on"}
     match_steps = win_condition.intersection(set(all_steps))
-    if len(match_steps) == 7:
+    if len(match_steps) == len(win_condition):
         return True
     else:
         return False
@@ -129,7 +129,7 @@ while player_steps > 0:   # main loop to check the lifeline of the player during
         if next_input == 1:
             current_step = 0
         elif next_input == 2:
-            current_step = 2
+            current_step = 1
         elif next_input == 3:
             current_step = 3
 
@@ -151,6 +151,8 @@ while player_steps > 0:   # main loop to check the lifeline of the player during
         next_input = get_input(current_step)
         if next_input == 4:
             current_step = 4
+        elif next_input == 5:
+            current_step = 0
     if winning_condition_check():
         print("********************************************************************************")
         print("********************************************************************************")

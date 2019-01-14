@@ -1,8 +1,11 @@
 # Date: 14-01-2019 - First Task: Design generic function for forward selection method
-# Date:  - Second Task: Decide threshold criteria to stop forward selection function
-# Date:  - Third Task: Add few more criteria like comparing AIC in current code to support forward selection method in effective way
-# Date:  - Fourth Task: Test forward selection method with different dataset and compare with the existing automated function available in R
-# Date:  - Fifth Task: Implement code to support backward selection method
+# Date:  - Task: Use correlation metric to decide the most important features from the dataset.
+# Date:  - Task: Plot the graph and check the how much percentage AIC got changes and decide the threshold based on that
+# Date:  - Task: Implement the dummy variable conversion code
+# Date:  - Task: Decide threshold criteria to stop forward selection function
+# Date:  - Task: Add few more criteria like comparing AIC in current code to support forward selection method in effective way
+# Date:  - Task: Test forward selection method with different dataset and compare with the existing automated function available in R
+# Date:  - Task: Implement code to support backward selection method
 
 """
 This module implements Step wise selection methods like:

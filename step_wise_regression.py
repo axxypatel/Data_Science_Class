@@ -54,7 +54,7 @@ def forward_selection(data, target):
         if index != 0:
             if current_aic > prev_aic:
                 print("No features left to be selected from the dataset")
-                break;
+                break
         else:
             prev_aic = current_aic
         index += 1

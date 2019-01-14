@@ -4,9 +4,15 @@
 # Date:  - Fourth Task: Test forward selection method with different dataset and compare with the existing automated function available in R
 # Date:  - Fifth Task: Implement code to support backward selection method
 
+"""
+This module implements Step wise selection methods like:
+Forward selection method
+Backward selection method
+"""
+
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LinearRegression
+# need import statsmodels library to use OLS to get model metrics
 import statsmodels.api as sm
 
 
@@ -18,41 +24,41 @@ def forward_selection(data, target):
     numeric_features = []
     min_aic_feature = []
 
+    # Take only features with datatype as float or int
     for col in features:
         if data[col].dtype in [np.int8, np.int16, np.int64, np.int32, np.float64, np.float16, np.float32]:
             numeric_features.append(col)
 
-    print("---------------------------------------------------------")
-    print("Numeric Variable: \n", numeric_features)
-    print("---------------------------------------------------------")
-
-    i = 0
+    index = 0
     prev_aic = 0.0
     # we will not consider the last element of the dataset during the step wise selection
     temp_length = len(numeric_features) - 1
-    while i < temp_length:
+
+    # Below loop help to compare AIC of all features one by one
+    while index < temp_length:
         aic_value = {}
-        for temp_col in numeric_features:
+        for imp_col in numeric_features:
             temp_features = []
-            if i != 0:
+            if index != 0:
                 temp_features = min_aic_feature.copy()
-            temp_features.append(temp_col)
+            temp_features.append(imp_col)
             ols_model = sm.OLS(target_data, data[temp_features]).fit()
-            aic_value.update({temp_col: ols_model.aic})
+            aic_value.update({imp_col: ols_model.aic})
 
         current_aic = min(aic_value.items(), key=lambda x: x[1])[1]
-        print(aic_value, min_aic_feature)
-        f = min(aic_value.items(), key=lambda x: x[1])[0]
-        min_aic_feature.append(f)
-        # print(f, min_aic_feature, current_aic)
-        numeric_features.remove(f)
-        if i != 0:
+        feature_with_min_aic = min(aic_value.items(), key=lambda x: x[1])[0]
+        min_aic_feature.append(feature_with_min_aic)
+        numeric_features.remove(feature_with_min_aic)
+
+        # Condition to compare AIC value between current OLS model and previous OLS model
+        if index != 0:
             if current_aic > prev_aic:
                 print("No features left to be selected from the dataset")
                 break;
         else:
             prev_aic = current_aic
-        i += 1
+        index += 1
+    # return list of import features based on forward selection method
     return min_aic_feature
 
 
